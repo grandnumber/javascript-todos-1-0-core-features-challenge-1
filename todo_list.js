@@ -1,50 +1,43 @@
-var createTodoList = function() {
-  var todoList = {};
+var returnMeAnewTodoList = function() {
+    return {
+    todos: [],
+    name: "Mikey mofo",
+    add: function(task_string){
+      var task = {name: task_string, complete:false}
+      this.todos.push(task);
+    },
+    secondName: "Janet mofo",
+    remove: function(task){
+      var task_index=this.todos.indexOf(task);
+      delete this.todos[task_index];
+    },
 
-  // your code here
+    list: function(task){
+      var task_index =this.todos.indexOf(task);
+      this.todos[task_index].complete=true
+    },
 
-  return todoList;
+    print: function(){
+      this.todos.forEach(function(todo){
+        console.log(todo.name, "complete: " + todo.complete);
+      })
+    },
+
+  };
 };
 
 
 
 
 
+var todoList = returnMeAnewTodoList();
 
+todoList.add("buy stuff")
+todoList.add("sell stuff")
+todoList.add("pack stuff")
+todoList.add("learn stuff")
 // Driver code
 
-
-// Release 1
-
-var groceryList = createTodoList();
-groceryList.add('bread');
-groceryList.add('cheese');
-groceryList.add('milk');
-groceryList.list(); //-> ['bread', 'cheese', 'milk']
-groceryList.indexOf('cheese'); //-> 1
-groceryList.remove(1);
-groceryList.list(); //-> ['bread', 'milk']
-
-// release 2
-var groceryList = createTodoList();
-groceryList.add('bread');
-groceryList.add('cheese');
-groceryList.add('milk');
-groceryList.list(); //-> [
-// {description: 'bread', completed: false}, 
-// {description: 'cheese', completed: false}, 
-// {description: 'milk', completed: false}, 
-// ];
-groceryList.indexOf('cheese'); //-> 1
-groceryList.get(1); //-> {description: 'cheese', completed: false}
-groceryList.complete(1);
-groceryList.list(); //-> [
-// {description: 'bread', completed: false}, 
-// {description: 'cheese', completed: true}, 
-// {description: 'milk', completed: false}, 
-// ];
-groceryList.remove(1);
-groceryList.list(); //-> [
-// {description: 'bread', completed: false}, 
-// {description: 'milk', completed: false}, 
-// ];
+ // add: function(task){
+ //      this.todos.push(task);
+ //    },
